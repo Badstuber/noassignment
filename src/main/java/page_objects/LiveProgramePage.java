@@ -43,8 +43,20 @@ public class LiveProgramePage {
 
     public void checkProgrammeAndBetPageAreAvailable(){
         LiveProgramePage liveProgramePage = new LiveProgramePage(liveBetDictionary.getBrowser());
-        liveProgramePage.navigateToUrl("https://www.novibet.gr/live-schedule").acceptCookies();
-        liveProgramePage.navigateToUrl("https://www.novibet.gr/live-betting").acceptCookies();
+        try {
+            liveProgramePage.navigateToUrl("https://www.novibet.gr/live-schedule").acceptCookies();
+            log.info("Navigation to live schedule succeded");
+        } catch (Exception e){
+            log.error("Navigation to live schedule failed");
+            e.printStackTrace();
+        }
+        try {
+            liveProgramePage.navigateToUrl("https://www.novibet.gr/live-betting");
+            log.info("Navigation to live betting succeded");
+        } catch (Exception e){
+            log.error("Navigation to live betting failed");
+            e.printStackTrace();
+        }
 
     }
 }
