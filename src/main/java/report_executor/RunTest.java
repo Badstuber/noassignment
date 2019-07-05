@@ -1,16 +1,15 @@
 package report_executor;
+import helpers.ConfigHelper;
 
-import dictionaries.LiveBetDictionary;
-import page_objects.LiveProgramePage;
 
 public class RunTest {
-LiveBetDictionary liveBetDictionary = LiveBetDictionary.getInstance();
 
-
-public static void main(String[] args) {
-        LiveProgramePage liveProgramePage = new LiveProgramePage(LiveBetDictionary.getInstance().getBrowser());
-        liveProgramePage.prepareForTest();
-        liveProgramePage.checkProgrammeAndBetPageAreAvailable();
-
+public static void main(String[] args) throws InterruptedException {
+    ConfigHelper configHelper = new ConfigHelper();
+    TestStepDefs testStepDefs = new TestStepDefs();
+    testStepDefs.prepareForTest();
+    testStepDefs.checkProgrammeAndBetPageAreAvailable();
+    testStepDefs.getLiveProgrammeStartTimes();
+    testStepDefs.tearDownTest();
     }
 }

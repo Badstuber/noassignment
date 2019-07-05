@@ -17,14 +17,22 @@ import static io.github.bonigarcia.wdm.DriverManagerType.CHROME;
 
 public class SeleniumHelper {
     private static final Logger log = LogManager.getLogger(SeleniumHelper.class);
-    static String driverVersion = System.getProperty("chromedriver-version", "2.37");
+    /*this allows us to choose a version and execute against it without the need to download the binary webdriver*/
+    static String driverVersion = System.getProperty("chromedriver-version", "74.0.3729.6");
+
     public void prepareBrowser (WebDriver webDriver){
         log.info("Deleting cookies");
         webDriver.manage().deleteAllCookies();
     }
 
+    public void closeBrowser (WebDriver webDriver){
+        log.info("Shutting down browser");
+        webDriver.close();
+    }
+
     public WebDriver openBrowser (){
         WebDriver browser;
+        /*ChromeDriverManager allows us to setup different browsers and specific capabilities on them such as proxy, if need to*/
         ChromeDriverManager.getInstance(CHROME).version(driverVersion).setup();
         DesiredCapabilities capabilities = DesiredCapabilities.chrome();
         browser = openRegularBrowser(capabilities);

@@ -12,6 +12,7 @@
         <junit.version>5.4.2</junit.version>
         <log4j.version>2.11.2</log4j.version>
         <selenium.version>3.141.59</selenium.version>
+        <webdrivermanager.version>3.6.1</webdrivermanager.version>
     </properties>
 <build>
     <plugins>
@@ -62,7 +63,7 @@
         <dependency>
             <groupId>io.github.bonigarcia</groupId>
             <artifactId>webdrivermanager</artifactId>
-            <version>3.6.1</version>
+            <version>${webdrivermanager.version}</version>
         </dependency>
 
     </dependencies>
